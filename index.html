@@ -12,7 +12,7 @@
     #map {
       position:absolute;
       width: 100%;
-      height: 100%;
+      height: 80%;
     }
     svg {
       position: absolute;
@@ -23,7 +23,9 @@
 </head>
 
 <body>
+  <div id='info'style="width:100% ;color=black; height:10%"></div>
   <div id="map"></div>
+
   <script>
 
   var lat = null;
@@ -61,13 +63,13 @@ new mapboxgl.Marker(el)
     .addTo(map);
 
 
-  console.log(lat)
-  setInterval(function(){lat = position.coords["latitude"];
+  setInterval(function(){
+    lat = position.coords["latitude"];
 	lng = position.coords["longitude"];
 
    coordo = [lat , lng ];
 
-
+  document.getElementById('info').innerHTML = coordo;
 
   tab.push(coordo);
   Line();
@@ -124,4 +126,5 @@ map.removeSource('route');
     </script>
 </body>
 </html>
+
 
