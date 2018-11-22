@@ -23,7 +23,7 @@
 </head>
 
 <body>
-  <div id='info'style="width:100% ;color=black; height:10%"></div>
+  <div style="width:100% ;color=black; height:10%"><div id='info'></div>  ////  <span id="currentLat">???</span>°, <span id="currentLon">???</span>°</div>
   <div id="map"></div>
 
   <script>
@@ -42,6 +42,12 @@
 
 
 if (navigator.geolocation) {
+
+  navigator.geolocation.watchPosition(function(position) {
+ document.getElementById('currentLat').innerHTML = position.coords.latitude;
+ document.getElementById('currentLon').innerHTML = position.coords.longitude;
+});
+
   navigator.geolocation.getCurrentPosition(function(position) {
 	var locationMarker = null;
 	if (locationMarker){
@@ -126,5 +132,6 @@ map.removeSource('route');
     </script>
 </body>
 </html>
+
 
 
